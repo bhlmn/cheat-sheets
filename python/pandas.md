@@ -19,3 +19,18 @@ df.drop_duplicates(subset=None, keep='first', inplace=False)
 ```
 
 where `subset` is a column label or list of column labels to be considered. By default all columns are considered.
+
+## Bootstrap analysis
+
+I'm in search of the quickest way to do bootstrap analysis. I've come up with a two-liner:
+
+``` python
+# Imports and set sample size.
+import pandas as pd
+import numpy as np
+samples = 1000
+
+# Create a random dataframe and run the analysis.
+df = pd.DataFrame(np.random.randn(5000, 5), columns=['a', 'b', 'c', 'd', 'e'])
+pd.DataFrame([df.sample(n=len(df), replace=True).mean() for i in range(samples)]).describe(percentiles=[.1, .25, .5, .75, .9])
+```
