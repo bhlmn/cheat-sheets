@@ -35,3 +35,5 @@ df = pd.DataFrame(np.random.randn(5000, 5), columns=['a', 'b', 'c', 'd', 'e'])
 boot = pd.DataFrame([df.sample(n=len(df), replace=True).mean() for i in range(samples)])
 boot.describe(percentiles=[.1, .25, .5, .75, .9])
 ```
+
+Also look at the [bootstrapped package](https://github.com/facebookincubator/bootstrapped).
