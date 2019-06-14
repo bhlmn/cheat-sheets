@@ -32,5 +32,6 @@ samples = 1000
 
 # Create a random dataframe and run the analysis.
 df = pd.DataFrame(np.random.randn(5000, 5), columns=['a', 'b', 'c', 'd', 'e'])
-pd.DataFrame([df.sample(n=len(df), replace=True).mean() for i in range(samples)]).describe(percentiles=[.1, .25, .5, .75, .9])
+boot = pd.DataFrame([df.sample(n=len(df), replace=True).mean() for i in range(samples)])
+boot.describe(percentiles=[.1, .25, .5, .75, .9])
 ```
